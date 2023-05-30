@@ -2,8 +2,9 @@ import Phaser from 'phaser';
 import Player from '../player'
 
 class play extends Phaser.Scene {
-    constructor() {
+    constructor(config) {
         super('play')
+        this.config = config
     }
     create() {
         const map = this.make.tilemap({key: 'map'})
@@ -13,6 +14,10 @@ class play extends Phaser.Scene {
         const tiles_plants = map.addTilesetImage('plants', 'tiles_plants')
         const tiles_collide = map.addTilesetImage('collide', 'tiles_mossy')
 
+        // start and end points
+        const startPoint = map.getObjectLayer('zones').objects.find(point => point.name === 'start')
+        const endPoint = map.getObjectLayer('zones').objects.find(point => point.name === 'end')
+        console.log(startPoint)
         
 
         const env = map.createStaticLayer('env', [tiles_mossy, tiles_mossy_2, tiles_decoration, tiles_plants]);
@@ -20,21 +25,27 @@ class play extends Phaser.Scene {
         const collide = map.createDynamicLayer('collide', tiles_collide);
         collide.setCollisionByExclusion(-1, true)
     
-        const player = this.createPlayer()
-        this.physics.add.collider(player, collide)
-        
+        const player = this.createPlayer(startPoint)
+        player.collider(collide)
 
 
-        // this.init()
-        // this.initEvents()
+        this.camera(player)
     
     }
-   createPlayer() {
-        return new Player(this, 100, 550).setScale(.15);
+   createPlayer(startPoint) {
+        return new Player(this, startPoint.x, startPoint.y).setScale(.2);
    }
 
     update() {
         
+    }
+    camera(player) {
+        const { width, height, mapOffset, zoomCamera } = this.config
+
+        this.physics.world.setBounds(0, 0, width + mapOffset, height + 100)
+
+        this.cameras.main.setBounds(0, 0, width + mapOffset, height).setZoom(zoomCamera)
+        this.cameras.main.startFollow(player)
     }
 }
 

@@ -7,6 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
 
         this.init()
+        this.initEvents()
     }
 
 
@@ -17,40 +18,38 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.setGravityY(this.g);
         this.setCollideWorldBounds(true);
 
+        let keyA, keyS, keyD, keyW
         this.cursors = this.scene.input.keyboard.createCursorKeys()
+        // keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        // keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        // keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        // keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        // console.log(this.cursors)
     }
     initEvents() {
         this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
-    }
+        }
 
     update() {
-        
-        // console.log(this.cursors)
         const { left, right, up, space } = this.cursors
         if (left.isDown) {
             this.setVelocityX(-this.v);
-            this.flipY(true)
+            this.setFlipX(true)
         } else if (right.isDown) {
             this.setVelocityX(this.v);
-            this.flipY(true)
-          } else {
-            this.setVelocityX(0);
-          }
+            this.setFlipX(false)
+        } else {
+        this.setVelocityX(0);
+        }
 
-        // if((up.isDown || space.isDown) && this.player.body.onFloor()){
-        //     // this.player.setAccelerationX(this.playerSpeed)
-        //     // console.log(this.player.body.blocked.down)
-        //     // this.player.body.setGravity(0, -300)
-        //     this.player.setVelocityY(-this.g)
-        // } else {
-        //     // this.player.body.setGravity(0, 300)
-        //     this.player.setVelocityY(this.g)
-        // }
+        if ((space.isDown || up.isDown) && this.body.onFloor()){
+            this.setVelocityY(-this.v * 1.75)
+        }
+
     }
-
-    // initEvents() {
-    //     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
-    // }
+    collider(gameObject, callback) {
+        this.scene.physics.add.collider(this, gameObject, callback, null, this)
+    }
 }
 
 export default Player

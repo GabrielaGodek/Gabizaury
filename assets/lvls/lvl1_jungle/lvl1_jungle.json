@@ -155,9 +155,44 @@
          "width":100,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"zones",
+         "objects":[
+                {
+                 "height":0,
+                 "id":1,
+                 "name":"start",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":61.6937745372967,
+                 "y":168.255748738082
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"end",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1559.16993830623,
+                 "y":378.575434660684
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":1,
+ "nextlayerid":5,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",
@@ -166,7 +201,7 @@
         {
          "columns":18,
          "firstgid":1,
-         "image":"lvl1_Mossy.png",
+         "image":"..\/..\/..\/..\/course\/assets\/lvls\/lvl1_jungle\/lvl1_Mossy.png",
          "imageheight":288,
          "imagewidth":288,
          "margin":0,
@@ -179,7 +214,7 @@
         {
          "columns":24,
          "firstgid":325,
-         "image":"lv1_Mossy_2.png",
+         "image":"..\/..\/..\/..\/course\/assets\/lvls\/lvl1_jungle\/lv1_Mossy_2.png",
          "imageheight":384,
          "imagewidth":384,
          "margin":0,
@@ -192,7 +227,7 @@
         {
          "columns":16,
          "firstgid":901,
-         "image":"lvl1_Decoration.png",
+         "image":"..\/..\/..\/..\/course\/assets\/lvls\/lvl1_jungle\/lvl1_Decoration.png",
          "imageheight":256,
          "imagewidth":256,
          "margin":0,
@@ -205,7 +240,7 @@
         {
          "columns":32,
          "firstgid":1157,
-         "image":"lvl1_Hanging Plants.png",
+         "image":"..\/..\/..\/..\/course\/assets\/lvls\/lvl1_jungle\/lvl1_Hanging Plants.png",
          "imageheight":737,
          "imagewidth":512,
          "margin":0,
