@@ -14,7 +14,8 @@ class preload extends Phaser.Scene {
 
         // player
         this.load.image('player', '../assets/player/player_dino.png')
-
+        // enemy
+        this.load.image('enemy', '../assets/player/enemy.png')
     }
     create() {
         this.scene.start('play')

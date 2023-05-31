@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import lvl1 from '../levels/lvl1';
-import preload from '../levels/preload';
-import play from '../levels/play';
+import lvl1 from './levels/lvl1';
+import preload from './levels/preload';
+import play from './levels/play';
 
 const mapWidth = 1600
 
@@ -28,7 +28,7 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      // debug: true,
+      debug: true,
     }
   },
   scene: initScenes()
