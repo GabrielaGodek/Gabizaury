@@ -64,9 +64,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     prevRay = null
     prevHit = null
 
-    // bodyPositionDifferenceX: 0,
-    // prevRay: null,
-    // prevHasHit: null,
     
     raycasting(body, edge, len = 30, precision = 0) {
         const { x, y, width, halfHeight } = body

@@ -40,29 +40,10 @@ class play extends Phaser.Scene {
             enemy.collider(collide)
         })
 
-        this.plotting = false;
-        this.graphics = this.add.graphics();
-        this.line = new Phaser.Geom.Line();
-        this.graphics.lineStyle(1, 0x00ff00);
-
-        // this.input.on('pointerdown', this.startDrawing, this);
         this.input.on('pointerup', pointer => this.finishDrawing(pointer, platform), this);
         
     }
-    fillTileColor(platform) {
-        const RGBColor = new Phaser.Display.Color(0, 0, 0, 0)
-        platform.renderDebug(this.graphics, {tileColor: null, RGBColor})
-    }
-    // startDrawing(pointer) {
-    //     if (this.tileTouch && this.tileTouch.length > 0) {
-    //         this.tileTouch.forEach(i => {
-    //             i.index!==-1 && i.setCollision(false)
-    //         }) 
-    //     }
-    //         this.line.x1 = pointer.worldX;
-    //     this.line.y1 = pointer.worldY;
-    //     this.plotting = true;
-    // }
+
     finishDrawing(pointer, platform) {
         this.line.x2 = pointer.worldX;
         this.line.y2 = pointer.worldY;
@@ -74,11 +55,6 @@ class play extends Phaser.Scene {
         this.tileTouch.forEach(i => {
             i.index!==-1 && i.setCollision(true)
         })
-
-        this.fillTileColor(platform)
-
-        this.plotting = false;
-        // console.log(this.tileTouch.length)
     }
     createPlayer(startPoint) {
         return new Player(this, startPoint.x, startPoint.y).setScale(.2)
@@ -110,17 +86,7 @@ class play extends Phaser.Scene {
         })
     }
 
-    update () {
-        // raycasting
-        if (this.plotting) {
-            const pointer = this.input.activePointer;
-        
-            this.line.x2 = pointer.worldX;
-            this.line.y2 = pointer.worldY;
-            this.graphics.clear();
-            this.graphics.strokeLineShape(this.line);
-            }
-    }
+    update () {}
 }
 
 export default play;
