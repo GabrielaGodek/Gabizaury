@@ -1,11 +1,8 @@
 import Phaser from 'phaser';
-import lvl1 from './levels/lvl1';
 import preload from './levels/preload';
 import play from './levels/play';
 
 const mapWidth = 1600
-
-
 const width = document.body.offsetWidth
 const height = 700
 
@@ -13,7 +10,6 @@ const shared_config = {
   mapOffset: mapWidth > width ? mapWidth - width : 0,
   width: width,
   height: height,
-  zoomCamera: 1.3,
 }
 
 const scenes = [preload, play];
@@ -21,11 +17,18 @@ const createScene = scene => new scene(shared_config)
 const initScenes = () => scenes.map(createScene)
 
 const config = {
+  /**
+    Checks if the browser supports WebGL rendering and falls back to Canvas rendering if WebGL is not supported
+    WebGL - rendering utilizes the power of the GPU, which generally provides better performance and advanced graphical features
+    Canvas - rendering can be slower compared to WebGL but provides wider compatibility
+  */
   type: Phaser.AUTO,
   ...shared_config,
-  pixelArt: true,
   backgroundColor: '#3a5f4e',
   physics: {
+    /**
+      default physics engine, handles collisions, overlapping, gravity, movement, tilemap collisions
+     */
     default: 'arcade',
     arcade: {
       debug: true,

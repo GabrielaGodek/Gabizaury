@@ -5,7 +5,7 @@ class preload extends Phaser.Scene {
         super('preload')
     }
     preload() {
-        // tileset for lvl1 
+        // tilemap for lvl1 
         this.load.tilemapTiledJSON('map', '../assets/lvls/lvl1_jungle/lvl1_jungle.json')
         this.load.image('tiles_mossy', '../assets/lvls/lvl1_jungle/lvl1_Mossy.png')
         this.load.image('tiles_mossy_2', '../assets/lvls/lvl1_jungle/lv1_Mossy_2.png')
@@ -18,6 +18,10 @@ class preload extends Phaser.Scene {
         this.load.image('enemy', '../assets/player/enemy.png')
     }
     create() {
+        /**
+         * starts the execution of another scene with the key 'play'. 
+         * Allows for transitioning from one scene to another.
+         */
         this.scene.start('play')
     }
 }

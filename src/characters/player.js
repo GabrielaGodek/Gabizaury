@@ -8,7 +8,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
 
         this.init()
-        this.initEvents()
     }
 
 
@@ -20,21 +19,28 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true);
 
         this.health =  100
-        this.healthbar = new HealthBar(
-            this.scene,
-            0,
-            0,
-            this.health
-        )
+        this.healthbar = new HealthBar(this.scene, 0, 0, this.health)
 
+
+        /**
+         * create an object that represents the keyboard arrow keys as input controls
+         * this.scene refers to the current scene where this code is executed]
+         * handles user input events
+         * createCursorKeys() is a method provided by the keyboard module to create an object that represents the arrow keys on the keyboard
+         */
         this.cursors = this.scene.input.keyboard.createCursorKeys()
-    }
-    initEvents() {
+
+        /**
+         * register a callback function that will be called on every update cycle of the scene
+         * this.scene.events - refers to the event emitter of the scene
+         * @param {} Phaser.Scenes.Events.UPDATE - represents the "update" event of a scene
+         * @param {} this.update - refers to the callback function that will be executed when the "update" event is triggered
+         * @param {global object} this - refers to the current scene object
+         */
         this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
     }
     takeHits (player, damageValue){
         this.health -= damageValue
-        // console.log(this.health)
         this.healthbar.takeDamage(this.health)
     }
     update() {
@@ -55,6 +61,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     }
     objectsCollider(gameObject, callback) {
+        /**
+         * this.scene.physics - refers to the physics manager of the scene, which handles physics-related operations and collisions
+         * add.collider - method provided by the physics manager to create a collider between two game objects
+         * @param {global object} this - represents the first game object involved in the collision
+         * @param {object} gameObject - represents the second game object involved in the collision
+         * @param {function} callback - function that will be called when the collision occurs between the two game objects
+         * @param {object} null - no additional parameters passed to the callback function
+         * @param {global object} this - refers to the current scene object
+         */
         this.scene.physics.add.collider(this, gameObject, callback, null, this)
     }
 
