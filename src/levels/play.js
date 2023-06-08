@@ -25,23 +25,30 @@ class play extends Phaser.Scene {
 
         const enemySpawns =  map.getObjectLayer('enemies')
 
+        const damageValue = 0.5
+
         collide.setCollisionByExclusion(-1, true)
 
         const player = this.createPlayer(startPoint)
-        player.collider(collide)
+        player.objectsCollider(collide)
+        
 
         
         this.finishLvl(endPoint, player)
         this.camera(player)
         
         const enemies = this.createEnemy(enemySpawns, collide)
-
         enemies.forEach(enemy => {
-            enemy.collider(collide)
+            enemy.objectsCollider(collide)
+            player.objectsCollider(enemy, this.playerGotDamage)
         })
 
         this.input.on('pointerup', pointer => this.finishDrawing(pointer, platform), this);
         
+
+    }
+    playerGotDamage (player, enemy, damageValue = 20) {
+        player.takeHits(player, damageValue)
     }
 
     finishDrawing(pointer, platform) {
@@ -56,9 +63,11 @@ class play extends Phaser.Scene {
             i.index!==-1 && i.setCollision(true)
         })
     }
+
     createPlayer(startPoint) {
         return new Player(this, startPoint.x, startPoint.y).setScale(.2)
     }
+
     createEnemy(points, edge) {
         return points.objects.map(point => {
             const enemy = new Enemy(this, point.x, point.y).setScale(.08)
@@ -67,14 +76,17 @@ class play extends Phaser.Scene {
         })
 
     }
+
     camera(player) {
         const { width, height, mapOffset, zoomCamera } = this.config
 
         this.physics.world.setBounds(0, 0, width + mapOffset, height + 100)
 
-        this.cameras.main.setBounds(0, 0, width + mapOffset, height).setZoom(zoomCamera)
+        // this.cameras.main.setBounds(0, 0, width + mapOffset, height).setZoom(zoomCamera)
+        this.cameras.main.setBounds(0, 0, width + mapOffset, height)
         this.cameras.main.startFollow(player)
     }
+
     finishLvl(endPoint, player) {
         // create phantom object
         const end = this.physics.add.sprite(endPoint.x, endPoint.y, 'end').setSize(5, this.config.height)
@@ -85,8 +97,6 @@ class play extends Phaser.Scene {
             overlap.active = false
         })
     }
-
-    update () {}
 }
 
 export default play;

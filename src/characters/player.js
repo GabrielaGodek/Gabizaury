@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import HealthBar from '../components/healthbar'
 
 class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y){
@@ -18,18 +19,24 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.setGravityY(this.g);
         this.setCollideWorldBounds(true);
 
-        let keyA, keyS, keyD, keyW
+        this.health =  100
+        this.healthbar = new HealthBar(
+            this.scene,
+            0,
+            0,
+            this.health
+        )
+
         this.cursors = this.scene.input.keyboard.createCursorKeys()
-        // keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        // keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        // keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        // keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        // console.log(this.cursors)
     }
     initEvents() {
         this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
-        }
-
+    }
+    takeHits (player, damageValue){
+        this.health -= damageValue
+        // console.log(this.health)
+        this.healthbar.takeDamage(this.health)
+    }
     update() {
         const { left, right, up, space } = this.cursors
         if (left.isDown) {
@@ -47,9 +54,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
     }
-    collider(gameObject, callback) {
+    objectsCollider(gameObject, callback) {
         this.scene.physics.add.collider(this, gameObject, callback, null, this)
     }
+
+
 }
 
 export default Player

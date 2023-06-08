@@ -30,7 +30,8 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
     }
 
-    collider(gameObject, callback) {
+    objectsCollider(gameObject, callback) {
+        // console.log('enemy collide')
         this.scene.physics.add.collider(this, gameObject, callback, null, this)
     }
     setPlatformEdge(edge) {
