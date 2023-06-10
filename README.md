@@ -32,8 +32,9 @@ Follow these steps to get the project up and running on your local machine:
 
 This will start the project and you can access it in your browser at [http://localhost:8080/](http://localhost:8080/)
 
-
-
-
 ## License
 This project is licensed under the MIT License.
+
+
+## Preview
+![Gabizaury Preview](gabizaury_preview.png)
