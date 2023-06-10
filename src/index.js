@@ -4,7 +4,7 @@ import play from './levels/play';
 
 const mapWidth = 1600
 const width = document.body.offsetWidth
-const height = 700
+const height = 640
 
 const shared_config = {
   mapOffset: mapWidth > width ? mapWidth - width : 0,
@@ -31,7 +31,7 @@ const config = {
      */
     default: 'arcade',
     arcade: {
-      debug: true,
+      debug: false,
     }
   },
   scene: initScenes()

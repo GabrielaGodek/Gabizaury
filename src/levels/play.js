@@ -96,6 +96,7 @@ class play extends Phaser.Scene {
         const overlap = this.physics.add.overlap(player, end, () => {
             // Deactivates the overlap collider, prevent the callback function from being invoked multiple times
             overlap.active = false
+            window.location.reload();
         })
     }
 }

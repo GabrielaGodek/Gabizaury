@@ -21,7 +21,7 @@ class preload extends Phaser.Scene {
     create() {
         /**
          * starts the execution of another scene with the key 'play'. 
-         * Allows for transitioning from one scene to another.
+         * allows for transitioning from one scene to another.
          */
         this.scene.start('play')
     }

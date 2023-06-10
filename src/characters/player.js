@@ -41,7 +41,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
     takeHits (player, damageValue){
         this.health -= damageValue
-        this.healthbar.takeDamage(this.health)
+        if(this.health > 0){
+            this.healthbar.takeDamage(this.health)
+        } else {
+            window.location.reload();
+        }
     }
     update() {
         const { left, right, up, space } = this.cursors

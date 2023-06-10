@@ -15,7 +15,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.edge = null
         this.rayBeam = this.scene.add.graphics({
             lineStyle: {
-                width: 2,
+                width: 0,
                 color: 0
             }
         })
