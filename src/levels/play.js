@@ -16,6 +16,8 @@ class play extends Phaser.Scene {
         const tiles_decoration = map.addTilesetImage('decoration', 'tiles_decoration')
         const tiles_plants = map.addTilesetImage('plants', 'tiles_plants')
         const tiles_collide = map.addTilesetImage('collide', 'tiles_mossy')
+        
+        this.add.image(0, 0, 'bg').setOrigin(0, 0).setDisplaySize(this.config.width + this.config.mapOffset, this.config.height)
 
         // bond layers in useful game objects
         const platform = map.createLayer('platforms', [tiles_mossy, tiles_mossy_2, tiles_decoration, tiles_plants]);
