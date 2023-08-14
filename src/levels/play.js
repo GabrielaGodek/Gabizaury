@@ -8,7 +8,7 @@ class play extends Phaser.Scene {
         this.config = config
     }
     create() {
-
+// silnik regul
         // get necessary layers from tilesheets in json format
         const map = this.make.tilemap({ key: 'map' })
         const tiles_mossy = map.addTilesetImage('mossy', 'tiles_mossy')
@@ -30,6 +30,7 @@ class play extends Phaser.Scene {
         // extract from the object enemy spawns points
         const enemySpawns =  map.getObjectLayer('enemies')
 
+
         /**
          * method is called on collide layer of a tilemap.
          * first param represents index of tiles, -1 all tiles in the "collide" layer with index greater than 0 will have collision enabled
@@ -50,7 +51,7 @@ class play extends Phaser.Scene {
         })
 
     }
-    playerGotDamage(player, enemy, damageValue = 1) {
+    playerGotDamage(player, enemy, damageValue = 200) {
         player.takeHits(player, damageValue)
     }
 
