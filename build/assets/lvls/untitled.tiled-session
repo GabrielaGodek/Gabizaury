@@ -1,0 +1,77 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "lvl1_jungle/lvl1_jungle.json",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
+        "lvl1_jungle/lvl1_jungle.json": {
+            "scale": 0.3566,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 650.5888951205834,
+                "y": 5.608524957936197
+            }
+        },
+        "lvl1_jungle/lvl1_jungle.json#decoration": {
+            "scaleInDock": 1
+        },
+        "lvl1_jungle/lvl1_jungle.json#mossy": {
+            "scaleInDock": 1
+        },
+        "lvl1_jungle/lvl1_jungle.json#mossy_2": {
+            "scaleInDock": 1
+        },
+        "lvl1_jungle/lvl1_jungle.json#plants": {
+            "scaleInDock": 1
+        },
+        "lvl1_jungle/test_map_tile.json": {
+            "scale": 0.92328125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 789.5752242342189,
+                "y": 281.0627855813167
+            }
+        },
+        "lvl1_jungle/test_map_tile.json#TEST": {
+            "scaleInDock": 1
+        },
+        "lvl_mossy.json": {
+            "scale": 0.6115625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1237.8129790495657,
+                "y": 398.9780275932551
+            }
+        },
+        "lvl_mossy.json#lvl1_test": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "/Users/g0gab1s/Documents/Web Dev/phaser/course/assets/lvls/lvl1_jungle",
+    "map.height": 40,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
+    "openFiles": [
+        "lvl1_jungle/lvl1_jungle.json"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "lvl1_jungle/lvl1_jungle.json",
+        "lvl1_jungle/test_map_tile.json",
+        "lvl_mossy.json"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
